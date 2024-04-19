@@ -72,18 +72,15 @@ public function render($request, Throwable $exception)
 // validation exception
     if ($exception instanceof ValidationException) {
         $errors = $exception->validator->errors()->getMessages();
-        return $this->errorResponse($errors,
-        Response::HTTP_UNPROCESSABLE_ENTITY);
+        return $this->errorResponse($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 // access to forbidden
     if ($exception instanceof AuthorizationException) {
-        return $this->errorResponse($exception->getMessage(),
-        Response::HTTP_FORBIDDEN);
+        return $this->errorResponse($exception->getMessage(), Response::HTTP_FORBIDDEN);
     }
 // unauthorized access
     if ($exception instanceof AuthenticationException) {
-        return $this->errorResponse($exception->getMessage(),
-        Response::HTTP_UNAUTHORIZED);
+        return $this->errorResponse($exception->getMessage(), Response::HTTP_UNAUTHORIZED);
     }
 // if your are running in development environment
     if (env('APP_DEBUG', false)) {
