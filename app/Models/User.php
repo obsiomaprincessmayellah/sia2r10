@@ -8,7 +8,7 @@
         protected $table = 'tb_luster';
         // column sa table
         protected $fillable = [
-            'username', 'password', 'gender', 'userID'
+            'username', 'password', 'gender'
         
         ];
     }
